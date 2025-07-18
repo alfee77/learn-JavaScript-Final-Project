@@ -1,5 +1,6 @@
 import FetchWrapper from "./fetch-wrapper.js";
 import { capitalize, calculateCalories } from "./helpers.js";
+import snackbar from "snackbar";
 
 const logFoodAPI = new FetchWrapper(
   "https://firestore.googleapis.com/v1/projects/jsdemo-3f387/databases/(default)/documents/alfee77food"
@@ -47,6 +48,9 @@ form.addEventListener("submit", (event) => {
       </li>`
       );
       form.reset();
+      snackbar.show("Food added successfully.");
+    } else {
+      snackbar.show("Some data is missing.");
     }
   });
 });
